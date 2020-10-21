@@ -1,0 +1,22 @@
+{
+  "data":{
+    "id":"root",
+    "label":"World",
+    "children":[
+      {"id":"root/1","label":"party"},
+      {"id":"root/2","label":"places"},
+      {"id":"root/3","label":"items"},
+      {"id":"root/4","label":"misc"},
+      {
+        "id":"root/sub1",
+        "label":"Events",
+        "children":[
+          {"id":"root/sub1/1","label":"This year"},
+          {"id":"root/sub1/2","label":"This month"},
+          {"id":"root/sub1/3","label":"This week"},
+          {"id":"root/sub1/4","label":"Today"}
+        ]
+      }
+    ]
+  }
+}
