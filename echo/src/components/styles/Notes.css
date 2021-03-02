@@ -1,0 +1,61 @@
+.Notes-body {
+  background-color: #ffffff;
+  min-height: 70vh;
+  min-width: 70vw;
+  font-size: calc(10px + 2vmin);
+  color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.col-n-1 {width: 20.00%;}
+.col-n-2 {width: 80.00%;}
+
+
+.psu-row-add {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 0px;
+}
+
+.psu-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+}
+
+.psu-row-sel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.psu-row-sel-2 {
+  padding-top: 5px;
+  padding-bottom: 80px;
+  font-size: 18px;
+}
+
+.button {
+  min-width: 10vw;
+  min-height: 5vh;
+}
+
+
+
+[class*="col-n-"] {
+  float: left;
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 90vh;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

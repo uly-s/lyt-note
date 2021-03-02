@@ -1,33 +1,18 @@
-const electron = require('electron')
-const app = electron.app
-const path = require('path')
-const isDev = require('electron-is-dev')
-require('electron-reload')
-const BrowserWindow = electron.BrowserWindow
+const { app, BrowserWindow } = require('electron')
 
-let mainWindow
-
-function createWindow() {
-  mainWindow = new BrowserWindow({
+function createWindow () {
+  const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
-    },
+      nodeIntegration: true
+    }
   })
 
-  mainWindow.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`,
-  )
-
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
+  win.loadFile('index.html')
 }
 
-app.on('ready', createWindow)
+app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -36,7 +21,7 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-  if (mainWindow === null) {
+  if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
 })

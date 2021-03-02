@@ -1,0 +1,24 @@
+{
+  "data":{
+    "id":"root",
+    "label":"World",
+    "root":"",
+    "children":[
+      {"id":"root/1","label":"party", "parent":"root", "text": "1. loot\n2. kill\n3. return"},
+      {"id":"root/2","label":"places", "parent":"root", "text": "herp a derp"},
+      {"id":"root/3","label":"items", "parent":"root", "text": "yolo bolo"},
+      {"id":"root/4","label":"misc", "parent":"root", "text":""},
+      {
+        "id":"root/sub1",
+        "label":"Events",
+        "parent":"root",
+        "children":[
+          {"id":"root/sub1/1","label":"This year", "parent":"sub1", "text": "BIG ASS KITTIES"},
+          {"id":"root/sub1/2","label":"This month", "parent":"sub1", "text": "it vaz ze yuce"},
+          {"id":"root/sub1/3","label":"This week", "parent":"sub1", "text":""},
+          {"id":"root/sub1/4","label":"Today", "parent":"sub1", "text":""}
+        ]
+      }
+    ]
+  }
+}
