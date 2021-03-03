@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Notes from './components/Notes.js';
+import Editor from './components/Editor.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Notes />
+        <Editor />
       </header>
     </div>
   );

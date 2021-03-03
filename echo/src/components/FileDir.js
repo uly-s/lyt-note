@@ -38,7 +38,7 @@ function ButtonAppBar(props) {
             <FolderIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            Files
           </Typography>
            
         </Toolbar>
@@ -46,6 +46,16 @@ function ButtonAppBar(props) {
     </div>
   );
 }
+
+
+function alterJson(data, id, value)
+{
+  if (data.id === id && data.hasOwnProperty('text'))
+    data.text = value;
+  else if (data.hasOwnProperty('children'))
+    data.children.map((child) => {alterJson(child, id, value)})
+  
+};
 
 
 
@@ -77,18 +87,18 @@ function FileTree(handleSelect, data) {
   );
 }
 
-
-
-
-
  export default class FileSystem extends React.Component {
   constructor(props)
   {
     super(props);
-    this.state = {selectedId: "", data: {}, refresh: false};
-    this.handleSelect = props.handleSelect.bind(this);
+    this.state = {selectedId: "root", selectedText:"", data: {}, refresh: false};
+    this.handleSelect = this.handleSelect.bind(this);
     this.addFolder = this.addFolder.bind(this);
-    this.setFile = this.setFile.bind(this);
+
+    this.updateNote = this.updateNote.bind(this);
+    this.updateData = this.updateData.bind(this);
+
+    this.noteRef = props.noteRef;
     fetch("./files.json").then((response) => response.json()).then((input) => { this.setState({data: input.data})});
   }
 
@@ -103,9 +113,42 @@ function FileTree(handleSelect, data) {
     console.log(this.state.data);
   }
 
-  setFile(id) {
-    this.setState({selectedId: id});
+  handleSelect(event, value)
+  {
+    event.preventDefault();
+
+    if(value !== this.state.selectedId)
+    {
+      this.updateData(this.state.selectedId, this.noteRef.current.getText());
+
+      this.updateNote(this.state.data, value);
+
+      this.setState({selectedId:value})
+    }
   }
+
+
+
+  updateNote(data, id) {
+    if (data.id === id && data.hasOwnProperty('text'))
+      this.noteRef.current.setText(data.text);
+    else if (data.hasOwnProperty('children'))
+      data.children.map((child) => {this.updateNote(child, id)});
+  };
+
+
+
+  updateData(id, value)
+  {
+    let json = this.state.data;
+    console.log(json);
+    alterJson(json, id, value);
+    console.log(json);
+
+    this.setState({data:json});
+  }
+
+
 
   render() {
     return (
