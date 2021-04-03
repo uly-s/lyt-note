@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import FileIO from '../util/fileio';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,7 +88,9 @@ function FileTree(handleSelect, data) {
   );
 }
 
- export default class FileSystem extends React.Component {
+var fileIO = new FileIO();
+
+ export default class FileNav extends React.Component {
   constructor(props)
   {
     super(props);

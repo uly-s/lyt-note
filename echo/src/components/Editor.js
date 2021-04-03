@@ -2,7 +2,7 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import "./styles/Notes.css"
-import FileSystem from './FileDir.js';
+import FileNav from './FileDir.js';
 import Note from './Note.js'
 
  
@@ -33,7 +33,7 @@ class Editor extends React.Component {
         <div className="col-n-1">
 
         <div className="psu-row">
-          <FileSystem  ref={this.fileRef} noteRef={this.noteRef} handleSelect={this.handleSelect}/>
+          <FileNav  ref={this.fileRef} noteRef={this.noteRef} handleSelect={this.handleSelect}/>
         </div>
 
         
