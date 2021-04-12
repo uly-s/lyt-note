@@ -9,32 +9,47 @@ function alterJson(data, id, value)
   
 };
 
+
+
+
 var folders = [];
 var files = [];
 var tree = {};
 
-function loadFolders() {
-    fetch("./files.json").then((response) => response.json()).then((input) => { folders = input.folders; });
+
+function buildTree() {
+  tree = folders[0];
+
+  for(let i = 0; i < folders.length; i += 1)
+  {
+    for(let j = i; j < folders.length; j += 1)
+    {
+      if(folders[j].parent === folders[i].id)
+        folders[i].children.push(folders[j]);
+    }
+  }
 }
 
-function loadFiles() {
-    fetch("./files.json").then((response) => response.json()).then((input) => { files = input.files; });
-}
 
-function makeTree() {
-
-}
 
 
 class FileIO {
+
     constructor(props)
     {
-        loadFolders();
-        loadFiles();
-        console.log(folders);
-        console.log(files);
+      fetch("./files.json").then((response) => response.json()).then((input) => { folders = input.folders; });
+      fetch("./files.json").then((response) => response.json()).then((input) => { files = input.files; });
+        
+      buildTree();
+
+    }
+
+    show() {
+      console.log(tree);
+      //console.log(files);
         
     }
+
 }
 
 export default FileIO;

@@ -113,13 +113,13 @@ var fileIO = new FileIO();
     let newItem = {id: newId, label: name};
     this.state.data.children.push(newItem);
     this.setState({refresh: !this.state.refresh});
-    console.log(this.state.data);
+    //console.log(this.state.data);
   }
 
   handleSelect(event, value)
   {
     event.preventDefault();
-
+    fileIO.show();
     if(value !== this.state.selectedId)
     {
       this.updateData(this.state.selectedId, this.noteRef.current.getText());
@@ -144,9 +144,9 @@ var fileIO = new FileIO();
   updateData(id, value)
   {
     let json = this.state.data;
-    console.log(json);
+    //console.log(json);
     alterJson(json, id, value);
-    console.log(json);
+    //console.log(json);
 
     this.setState({data:json});
   }
